@@ -1,0 +1,316 @@
+
+In [1]: numz = np.sort(np.array(random.sample(range(1000),10)))
+     ...: for i in numz:
+     ...: ^I_file = '/Users/BOY/PYTHON/INFREP/HW6/Data/test-%d.txt'%(i+1)
+     ...: ^Itmp = pd.read_csv(_file, header=None, quoting=3)
+     ...: ^Isentence = np.array(tmp[0])
+     ...: ^ItrueTag = np.array(tmp[1])-1
+     ...: ^IpredTag = predicted[i]
+     ...: ^IfalseCount = np.sum(trueTag != predTag)
+     ...: ^ItrueTag = np.array([tagz[j] for j in trueTag])
+     ...: ^IpredTag = np.array([tagz[j] for j in predTag])
+     ...: ^Iprint('Sentence #',i,':')
+     ...: ^Iprint()
+     ...: ^Inwords = sentence.shape[0]
+     ...: ^Ifor c in range(nwords):
+     ...: ^I^Iprint(sentence[c], "|", trueTag[c], '; Predicted:', predTag[c])
+     ...: ^Iprint()
+     ...: ^Iprint('Error rate for sentence',i,': ', round(falseCount/nwords,3))
+     ...: ^Iprint()
+     ...:  
+Sentence # 288 :
+
+Witnesses | noun ; Predicted: noun
+said | verb ; Predicted: verb
+most | adjective ; Predicted: adjective
+shops | noun ; Predicted: noun
+were | verb ; Predicted: verb
+closed | adjective ; Predicted: verb
+in | preposition ; Predicted: preposition
+towns | noun ; Predicted: noun
+and | other ; Predicted: other
+villages | noun ; Predicted: noun
+in | preposition ; Predicted: preposition
+the | determiner ; Predicted: determiner
+areas | noun ; Predicted: noun
+; | punctuation ; Predicted: punctuation
+with | preposition ; Predicted: preposition
+the | determiner ; Predicted: determiner
+exception | noun ; Predicted: noun
+of | preposition ; Predicted: preposition
+Hebron | noun ; Predicted: noun
+; | punctuation ; Predicted: punctuation
+a | determiner ; Predicted: determiner
+West | noun ; Predicted: noun
+Bank | noun ; Predicted: noun
+city | noun ; Predicted: noun
+still | adverb ; Predicted: noun
+under | preposition ; Predicted: preposition
+Israeli | adjective ; Predicted: adjective
+occupation | noun ; Predicted: noun
+. | punctuation ; Predicted: punctuation
+
+Error rate for sentence 288 :  0.069
+
+Sentence # 388 :
+
+Nolan | noun ; Predicted: adjective
+Henke | noun ; Predicted: noun
+; | punctuation ; Predicted: punctuation
+who | pronoun ; Predicted: pronoun
+led | verb ; Predicted: verb
+by | preposition ; Predicted: preposition
+two | number ; Predicted: number
+strokes | noun ; Predicted: noun
+entering | verb ; Predicted: verb
+the | determiner ; Predicted: determiner
+third | adjective ; Predicted: adjective
+round | noun ; Predicted: noun
+; | punctuation ; Predicted: punctuation
+carded | verb ; Predicted: verb
+a | determiner ; Predicted: determiner
+four-under | adjective ; Predicted: noun
+67 | number ; Predicted: number
+and | other ; Predicted: other
+was | verb ; Predicted: verb
+one | number ; Predicted: number
+stroke | noun ; Predicted: noun
+back | adverb ; Predicted: noun
+at | preposition ; Predicted: preposition
+18-under | adjective ; Predicted: preposition
+195 | number ; Predicted: number
+. | punctuation ; Predicted: punctuation
+
+Error rate for sentence 388 :  0.154
+
+Sentence # 390 :
+
+( | punctuation ; Predicted: punctuation
+Spain | noun ; Predicted: noun
+) | punctuation ; Predicted: punctuation
+; | punctuation ; Predicted: punctuation
+Paul | noun ; Predicted: noun
+Broadhurst | noun ; Predicted: noun
+; | punctuation ; Predicted: punctuation
+Greg | noun ; Predicted: noun
+Turner | noun ; Predicted: noun
+( | punctuation ; Predicted: punctuation
+New | noun ; Predicted: noun
+Zealand | noun ; Predicted: noun
+) | punctuation ; Predicted: punctuation
+; | punctuation ; Predicted: punctuation
+Mike | noun ; Predicted: noun
+
+Error rate for sentence 390 :  0.0
+
+Sentence # 479 :
+
+More | adjective ; Predicted: noun
+than | preposition ; Predicted: preposition
+20;000 | number ; Predicted: number
+people | noun ; Predicted: noun
+have | verb ; Predicted: verb
+died | verb ; Predicted: verb
+in | preposition ; Predicted: preposition
+12 | number ; Predicted: number
+years | noun ; Predicted: noun
+of | preposition ; Predicted: preposition
+fighting | verb ; Predicted: verb
+between | preposition ; Predicted: verb
+the | determiner ; Predicted: determiner
+guerrillas | noun ; Predicted: noun
+and | other ; Predicted: other
+Turkish | adjective ; Predicted: adjective
+forces | noun ; Predicted: noun
+. | punctuation ; Predicted: punctuation
+
+Error rate for sentence 479 :  0.111
+
+Sentence # 573 :
+
+The | determiner ; Predicted: determiner
+Federal | noun ; Predicted: noun
+Republic | noun ; Predicted: noun
+of | preposition ; Predicted: preposition
+Yugoslavia | noun ; Predicted: noun
+is | verb ; Predicted: verb
+the | determiner ; Predicted: determiner
+only | adjective ; Predicted: adjective
+country | noun ; Predicted: noun
+of | preposition ; Predicted: preposition
+the | determiner ; Predicted: determiner
+former | adjective ; Predicted: adjective
+Yugoslavia | noun ; Predicted: noun
+where | adverb ; Predicted: preposition
+Poles | noun ; Predicted: noun
+currently | adverb ; Predicted: adverb
+require | verb ; Predicted: verb
+visas | noun ; Predicted: noun
+. | punctuation ; Predicted: punctuation
+
+Error rate for sentence 573 :  0.053
+
+Sentence # 583 :
+
+Israel | noun ; Predicted: noun
+'s | other ; Predicted: other
+outgoing | adjective ; Predicted: verb
+peace | noun ; Predicted: noun
+negotiator | noun ; Predicted: preposition
+with | preposition ; Predicted: preposition
+Syria | noun ; Predicted: noun
+said | verb ; Predicted: verb
+on | preposition ; Predicted: preposition
+Thursday | noun ; Predicted: noun
+current | adjective ; Predicted: noun
+tensions | noun ; Predicted: noun
+between | preposition ; Predicted: preposition
+the | determiner ; Predicted: determiner
+two | number ; Predicted: number
+countries | noun ; Predicted: noun
+appeared | verb ; Predicted: verb
+to | other ; Predicted: other
+be | verb ; Predicted: verb
+a | determiner ; Predicted: determiner
+storm | noun ; Predicted: noun
+in | preposition ; Predicted: preposition
+a | determiner ; Predicted: determiner
+teacup | noun ; Predicted: noun
+. | punctuation ; Predicted: punctuation
+
+Error rate for sentence 583 :  0.12
+
+Sentence # 686 :
+
+Mother | noun ; Predicted: noun
+Teresa | noun ; Predicted: noun
+spent | verb ; Predicted: noun
+her | pronoun ; Predicted: pronoun
+86th | adjective ; Predicted: adjective
+birthday | noun ; Predicted: noun
+in | preposition ; Predicted: preposition
+a | determiner ; Predicted: determiner
+Calcutta | noun ; Predicted: noun
+hospital | noun ; Predicted: noun
+bed | noun ; Predicted: verb
+on | preposition ; Predicted: preposition
+Tuesday | noun ; Predicted: noun
+as | preposition ; Predicted: preposition
+tributes | noun ; Predicted: noun
+to | other ; Predicted: other
+the | determiner ; Predicted: determiner
+legendary | adjective ; Predicted: noun
+missionary | adjective ; Predicted: noun
+poured | verb ; Predicted: verb
+in | preposition ; Predicted: preposition
+from | preposition ; Predicted: preposition
+around | preposition ; Predicted: preposition
+the | determiner ; Predicted: determiner
+world | noun ; Predicted: noun
+. | punctuation ; Predicted: punctuation
+
+Error rate for sentence 686 :  0.154
+
+Sentence # 820 :
+
+He | pronoun ; Predicted: pronoun
+said | verb ; Predicted: verb
+a | determiner ; Predicted: determiner
+document | noun ; Predicted: noun
+would | other ; Predicted: other
+be | verb ; Predicted: verb
+completed | verb ; Predicted: verb
+in | preposition ; Predicted: preposition
+an | determiner ; Predicted: determiner
+hour | noun ; Predicted: noun
+'s | other ; Predicted: other
+time | noun ; Predicted: noun
+for | preposition ; Predicted: preposition
+signature | noun ; Predicted: noun
+by | preposition ; Predicted: preposition
+the | determiner ; Predicted: determiner
+two | number ; Predicted: number
+sides | noun ; Predicted: noun
+; | punctuation ; Predicted: punctuation
+who | pronoun ; Predicted: pronoun
+were | verb ; Predicted: verb
+working | verb ; Predicted: verb
+on | preposition ; Predicted: preposition
+a | determiner ; Predicted: determiner
+" | punctuation ; Predicted: punctuation
+day-by-day | adjective ; Predicted: noun
+schedule | noun ; Predicted: noun
+to | other ; Predicted: other
+stop | verb ; Predicted: verb
+the | determiner ; Predicted: determiner
+war | noun ; Predicted: noun
+in | preposition ; Predicted: preposition
+Chechnya | noun ; Predicted: noun
+. | punctuation ; Predicted: punctuation
+" | punctuation ; Predicted: punctuation
+
+Error rate for sentence 820 :  0.029
+
+Sentence # 873 :
+
+-- | punctuation ; Predicted: punctuation
+Pre-election | adjective ; Predicted: noun
+debate | noun ; Predicted: preposition
+heats | verb ; Predicted: pronoun
+up | other ; Predicted: other
+on | preposition ; Predicted: preposition
+economic | adjective ; Predicted: adjective
+issues | noun ; Predicted: noun
+as | preposition ; Predicted: preposition
+conservative | adjective ; Predicted: adjective
+New | noun ; Predicted: noun
+Democracy | noun ; Predicted: noun
+party | noun ; Predicted: noun
+promises | verb ; Predicted: noun
+seven | number ; Predicted: verb
+measures | noun ; Predicted: noun
+includind | verb ; Predicted: preposition
+tax | noun ; Predicted: noun
+relief | noun ; Predicted: noun
+for | preposition ; Predicted: preposition
+farmers | noun ; Predicted: noun
+and | other ; Predicted: other
+socialist | adjective ; Predicted: adjective
+Pasok | noun ; Predicted: noun
+defends | verb ; Predicted: noun
+progress | noun ; Predicted: noun
+on | preposition ; Predicted: preposition
+economic | adjective ; Predicted: adjective
+convergence | noun ; Predicted: noun
+with | preposition ; Predicted: preposition
+the | determiner ; Predicted: determiner
+EU | noun ; Predicted: noun
+
+Error rate for sentence 873 :  0.219
+
+Sentence # 930 :
+
+He | pronoun ; Predicted: pronoun
+will | other ; Predicted: other
+be | verb ; Predicted: verb
+replaced | verb ; Predicted: verb
+by | preposition ; Predicted: preposition
+Eliahu | noun ; Predicted: noun
+Ben-Elissar | noun ; Predicted: noun
+; | punctuation ; Predicted: punctuation
+a | determiner ; Predicted: determiner
+former | adjective ; Predicted: adjective
+Israeli | adjective ; Predicted: adjective
+envoy | noun ; Predicted: noun
+to | other ; Predicted: other
+Egypt | noun ; Predicted: noun
+and | other ; Predicted: other
+right-wing | adjective ; Predicted: verb
+Likud | noun ; Predicted: noun
+party | noun ; Predicted: noun
+politician | noun ; Predicted: noun
+. | punctuation ; Predicted: punctuation
+
+Error rate for sentence 930 :  0.05
+
+In [2]: 

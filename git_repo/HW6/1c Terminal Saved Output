@@ -1,0 +1,77 @@
+
+In [1]:                                                                             # FROM S
+    ...: AMPLE #Represent features using one-of-K scheme: If a feature can take value in 
+    ...:     X_encoded = [encoder.transform(x) for x in X]                           # FROM S
+    ...: AMPLE #{0,...,K}, then introduce K binary features such that the value of only 
+    ...:     return X_encoded, y, sentences                                                  
+    ...:                  # FROM SAMPLE #the i^th binary feature is non-zero when the feature
+    ...:  takes value 'i'.
+    ...:  
+    ...: 
+    ...: X_train, Y_train, TrainSent = ReadData("train") 
+    ...: 
+    ...: best_C=0.1
+    ...: 
+    ...: crf = ChainCRF(n_states=10, inference_method="max-product", directed=True)
+    ...: ssvm = OneSlackSSVM(crf, max_iter=200, C=best_C)
+    ...: ssvm.fit(X_train[:4500],Y_train[:4500])
+    ...: error = 1 - ssvm.score(X_train[-500:],Y_train[-500:])
+    ...: 
+    ...: tag = np.array(['verb','noun','adjective','adverb','preposition','pronoun',
+    ...: ^I'determiner','number','punctuation','other'])
+    ...: cl = random.sample(range(10),3)
+    ...: print('Chosen classes: ',tag[cl])
+    ...: 
+    ...: trans_matrix = np.reshape(ssvm.w[-10*10:],(10,10))
+    ...: pairs=list(itertools.combinations(cl,2))
+    ...: for pair in pairs:^I
+    ...: ^Iprint(tag[pair[0]], "->", tag[pair[1]], trans_matrix[pair[0]][pair[1]])
+    ...: ^Iprint(tag[pair[1]], "->", tag[pair[0]], trans_matrix[pair[1]][pair[0]])
+    ...: 
+    ...: 
+    ...: 
+Chosen classes:  ['pronoun' 'punctuation' 'noun']
+pronoun -> punctuation -0.00338585625322
+punctuation -> pronoun -0.0234312092397
+pronoun -> noun 1.14404578091
+noun -> pronoun -0.496991564155
+punctuation -> noun 0.655646657842
+noun -> punctuation 0.562797652016
+
+
+In [2]:      ...: features = ['Bias','Not Initial Capital','Initial Capital',
+     ...: ^I'Not All Capitals','All Capitals']
+     ...: with open('/Users/BOY/PYTHON/INFREP/HW6/prefixes.txt') as _file:
+     ...:     tmp = _file.readlines()
+     ...: pre = [x.strip() for x in tmp]
+     ...: for i in range(len(pre)):
+     ...: ^Ifeatures.append('Prefix: '+pre[i]) 
+     ...: with open('/Users/BOY/PYTHON/INFREP/HW6/suffixes.txt') as _file:
+     ...:     tmp = _file.readlines()
+     ...: suf = [x.strip() for x in tmp] 
+     ...: for i in range(len(pre)):
+     ...: ^Ifeatures.append('Suffix: '+suf[i]) 
+     ...: 
+     ...: # look for most relevant features
+     ...: 
+     ...: feat_array = ssvm.w[:-10*10]
+     ...: m = int(len(feat_array)/10)
+     ...: feat = [feat_array[i*m:(i+1)*m] for i in range(10)]
+     ...: for i in cl:
+     ...: ^Itmp = np.abs(np.array(feat[i]))
+     ...: ^Itmp = np.argsort(tmp)[-10:][::-1]
+     ...: ^Iprint('Most relevant features for tag ',tag[i],' :')
+     ...: ^Iprint([features[j] for j in tmp]) 
+     ...: 
+     ...: 
+     ...: 
+     ...: 
+Most relevant features for tag  pronoun  :
+['Prefix: it', 'Suffix: ir', 'Suffix: ey', 'Prefix: he', 'Suffix: em', 'Suffix: we', 'Prefix: yo', 'Prefix: hi', 'Suffix: my', 'Prefix: wh']
+Most relevant features for tag  punctuation  :
+['Prefix: )', 'Suffix: )', 'Prefix: ;', 'Suffix: ;', 'Prefix: (', 'Suffix: (', 'Prefix: "', 'Suffix: "', 'Suffix: $', 'Prefix: $']
+Most relevant features for tag  noun  :
+['Suffix: rs', 'Prefix: on', 'Initial Capital', 'Suffix: es', 'Suffix: gs', 'Suffix: ts', 'Suffix: cy', 'Suffix: ns', 'Suffix: ls', 'Prefix: it']
+
+
+

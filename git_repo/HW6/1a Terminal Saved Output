@@ -1,0 +1,50 @@
+In [4]:   #let's define the range of Cs
+   ...:   l1 = [10**i for i in range(-4,3,1)]
+   ...:   l1.extend([5*l for l in l1])
+   ...:   Cs = sorted(l1)
+   ...:   model, C, train_error = train_one_C(x_Train[:4500],y_Train[:4500],x_Train[-500:],y_
+   ...: Train[-500:], Cs)
+   ...:   model_tuples.append((model, C, train_error))
+   ...:   return model_tuples
+   ...: 
+   ...: 
+   ...: model, best_C, train_error = train_all_C(X_train, Y_train)[0]
+   ...: test_error = 1 - model.score(X_test, Y_test)
+   ...: print("Best C", best_C, ", training error:", train_error, ", validation error:", test
+   ...: _error)
+   ...: 
+   ...: list = [best_C, train_error]
+   ...: crf = ChainCRF(n_states=10, inference_method="max-product", directed=True)
+   ...: ssvm = OneSlackSSVM(crf, max_iter=200, C=best_C)
+   ...: ssvm.fit(X_train[:4500],Y_train[:4500])
+   ...: list.append(1. - ssvm.score(X_test,Y_test))
+   ...: print(list)
+   ...: 
+   ...: ssvm.fit(X_train,Y_train)
+   ...: error = 1. - ssvm.score(X_test,Y_test)
+   ...: print('test error -> ', error)   
+   ...: 
+   ...: 
+   ...: 
+   ...: 
+C = 0.0001 , training...
+C = 0.0005 , training...
+C = 0.001 , training...
+C = 0.005 , training...
+C = 0.01 , training...
+C = 0.05 , training...
+C = 0.1 , training...
+C = 0.5 , training...
+C = 1 , training...
+C = 5 , training...
+C = 10 , training...
+C = 50 , training...
+C = 100 , training...
+C = 500 , training...
+Completed.
+Best C: 0.1 , training error: 0.116533949824 , validation error: 0.120678322598
+[0.1, 0.11653394982447129, 0.12067832259760747]
+test error ->  0.119232286052
+
+In [5]: 
+
